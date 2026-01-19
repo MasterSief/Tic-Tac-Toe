@@ -3,6 +3,7 @@
 from typing import List, Optional
 import sys
 
+
 EMPTY = " "
 PLAYER_X = "X"
 PLAYER_O = "O"
@@ -13,6 +14,7 @@ WINNING_COMBOS = [
 ]
 
 
+# prints the current board state
 def print_board(board: List[str]) -> None:
     print()
     print(f" {board[0]} | {board[1]} | {board[2]} ")
@@ -23,6 +25,7 @@ def print_board(board: List[str]) -> None:
     print()
 
 
+# Shows a numbered board for reference
 def print_index_board() -> None:
     print()
     print(" 1 | 2 | 3 ")
@@ -33,6 +36,7 @@ def print_index_board() -> None:
     print()
 
 
+# checks for a winner
 def check_winner(board: List[str]) -> Optional[str]:
     """Gibt X oder O zurück falls ein Gewinner existiert sonst None."""
     for a, b, c in WINNING_COMBOS:
@@ -41,8 +45,10 @@ def check_winner(board: List[str]) -> Optional[str]:
     return None
 
 
+# checks for a draw
 def is_draw(board: List[str]) -> bool:
     return all(field != EMPTY for field in board) and check_winner(board) is None
+
 
 
 def get_move(board: List[str], player: str) -> int:
@@ -66,6 +72,7 @@ def get_move(board: List[str], player: str) -> int:
             print("Feld ist schon belegt, bitte anderes wählen.")
         else:
             return move
+
 
 
 def play_game() -> None:
@@ -95,6 +102,7 @@ def play_game() -> None:
         current_player = PLAYER_O if current_player == PLAYER_X else PLAYER_X
 
 
+
 def main() -> None:
     while True:
         play_game()
@@ -104,6 +112,7 @@ def main() -> None:
             break
         if again != "j":
             print("Ungültige Eingabe, verwende 'j' oder 'n'.")
+
 
 
 if __name__ == "__main__":
